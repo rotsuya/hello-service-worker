@@ -1,4 +1,4 @@
-http://rotsuya.github.io/hello-service-worker/
+https://rotsuya.github.io/hello-service-worker/
 
 # hello-service-worker
 
