@@ -1,4 +1,5 @@
 https://rotsuya.github.io/hello-service-worker/
+(currently does not work)
 
 # hello-service-worker
 
@@ -20,19 +21,40 @@ https://rotsuya.github.io/hello-service-worker/
   - ファイルのプリフェッチ
   - 賢いキャッシュ
     - 例: Webフォントのみ、特定ドメインのみ  
-  - WebSocketが使えない時にXHRでWebSocketをエミュレートする
   - RestAPIのエラーハンドリング
+- こんなユースケースも面白いのでは。
+  - WebSocketが使えない時にXHRでWebSocketをエミュレートする
+  - 通信系のJavaScriptのライブラリは、
+  ブラウザ側のスクリプトとServiceWorker側のスクリプトに分離すると、
+  開発しやすいのではないか。
 - ついでに、わかったこと。
   - 今のところ、Fetch APIとCache APIしか提供されない。
   - ServiceWorkerとWebページは、postMessgeでやりとりする。
+
+## とりあえず書いてみる
+
+- [HTML5 Rocks](http://www.html5rocks.com/en/tutorials/service-worker/introduction/?redirect_from_locale=ja)を見ながら、書いてみる。とりあえず、写経でいい。
+- わかったこと。
+  - https:// が必須。
+    - GitHub Pagesは https:// にも対応しているので便利。
+  - ServiceWorkerのファイルは、サイトのルートディレクトリに置かなければならない。
+    - ということは、なにか試す度に、GitHub PagesのOrganizationを毎回作らなければならない…。
+    - あまりにもめんどくさいので、GitHub Pages用に1つドメインを買って、
+    rotsuya/rotsuya.github.io/master ... http://rotsuya-github.com/
+    rotsuya/repository/gh-pages ... http://repository.rotsuya-github.com/
+    としたほうが良さそう。
+  - workerを書くようになれば、JavaScriptのコーディングスタイルも、
+  [最近の行儀のよい JavaScript の書き方](http://qiita.com/kaiinui/items/22a75d2adc56a40da7b7)
+  あたりを参考に、変えていったほうが良さそう。  
 
 ## 疑問
 
 - 使えるプロトコルは、ブラウザと同じ？
 
-## 参考
+## 参考文献
 
 - [MDN](https://developer.mozilla.org/ja/docs/Web/API/ServiceWorker_API)
+- [HTML5 Rocks](http://www.html5rocks.com/en/tutorials/service-worker/introduction/?redirect_from_locale=ja)
 - [by W3C](http://www.w3.org/TR/service-workers/)
 - [by IIJ 大津さん](http://d.hatena.ne.jp/jovi0608/20141204/1417697480)
   - [Simple Push](https://developer.mozilla.org/en-US/docs/Web/API/Simple_Push_API)
